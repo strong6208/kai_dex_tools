@@ -23,42 +23,50 @@ const fields: FieldDefinition<Student>[] = [
   {
     attribute: "id",
     label: "login.id",
+    width: 40,
   },
   {
     attribute: "name",
     label: "mypage.name",
   },
   {
-    attribute: "furigana",
+    attribute: "hiragana",
     label: "mypage.furigana",
   },
   {
     attribute: "birth",
     label: "user_list.birth",
+    width: 80,
   },
   {
     attribute: "phone",
     label: "mypage.phone",
+    width: 80,
   },
   {
-    attribute: "postal_code",
+    attribute: "post_number",
     label: "mypage.postal_code",
+    width: 60,
   },
   {
     attribute: "address",
     label: "mypage.address",
+    width: 90,
   },
   {
     attribute: "grade",
     label: "user_list.grade",
+    width: 40,
   },
   {
     attribute: "class",
     label: "user_list.class",
+    width: 45,
   },
   {
     attribute: "attend_number",
     label: "user_list.attend_bumber",
+    width: 80,
   },
   {
     attribute: "house",
@@ -67,18 +75,22 @@ const fields: FieldDefinition<Student>[] = [
   {
     attribute: "extra_activity",
     label: "user_list.extra_activity",
+    width: 80,
   },
   {
     attribute: "curriculum",
     label: "user_list.curriculum",
+    width: 90,
   },
   {
     attribute: "enrolled_sibling",
     label: "user_list.enrolled_sibling",
+    width: 80,
   },
   {
     attribute: "parent",
     label: "application.parent",
+    width: 80,
   },
   {
     attribute: "parent_phone",

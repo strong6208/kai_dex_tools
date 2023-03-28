@@ -93,8 +93,8 @@ export const UserTable = <T extends Record<string, any>>({
                 "&>td": {
                   borderWidth: 0,
                   textAlign: "center",
+                  p: "0.625rem 0",
                   "&:not(:last-of-type)": {
-                    p: "0.5rem",
                     borderWidth: "0 2px 2px 0",
                     borderStyle: "solid",
                     borderColor: "info.light",
@@ -108,7 +108,7 @@ export const UserTable = <T extends Record<string, any>>({
                 <TableCell
                   key={`cell-${f.attribute}`}
                   sx={{
-                    backgroundColor: "background.default",
+                    bgcolor: "background.paper",
                     width: f.width,
                   }}
                 >
@@ -117,10 +117,10 @@ export const UserTable = <T extends Record<string, any>>({
                   ) : (
                     <Typography.Action
                       sx={{
-                        color: "text.primary",
+                        color: "text.secondary",
                         fontWeight: 400,
                         whiteSpace: "nowrap",
-                        lineHeight: "20px",
+                        lineHeight: "24px",
                         overflow: "hidden",
                         textOverflow: "ellipsis",
                       }}

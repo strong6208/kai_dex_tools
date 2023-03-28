@@ -63,7 +63,7 @@ export const UserTable = <T extends Record<string, any>>({
                 fontWeight: 500,
                 fontSize: "0.875rem",
                 lineHeight: "1.5rem",
-                p: 0,
+                p: "10px 0",
                 borderWidth: "0 2px 0 0",
                 borderStyle: "solid",
                 bgcolor: "text.secondary",

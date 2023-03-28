@@ -15,7 +15,7 @@ import { SearchBox } from "../applicationList/components/searchBox"
 
 import { Student } from "src/types/student"
 import { PAGE_SIZE } from "src/constants/common"
-import { MOCK_STUDENT_DATA } from "./mockuser"
+import { MOCK_STUDENT_DATA } from "./mockstudent"
 
 const studentData: Student[] = MOCK_STUDENT_DATA
 

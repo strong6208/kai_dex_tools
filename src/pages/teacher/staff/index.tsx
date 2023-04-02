@@ -12,14 +12,14 @@ import {
 } from "src/UILibrary"
 import { UserTable, FieldDefinition } from "src/components/userTable"
 
-import { Student } from "src/types/student"
+import { Staff } from "src/types/staff"
 import { PAGE_SIZE } from "src/constants/common"
-import { MOCK_STUDENT_DATA } from "./mockstudent"
+import { MOCK_STAFF_DATA } from "./mockstaff"
 import { SearchBox } from "./components/searchBox"
 
-const studentData: Student[] = MOCK_STUDENT_DATA
+const staffData: Staff[] = MOCK_STAFF_DATA
 
-const fields: FieldDefinition<Student>[] = [
+const fields: FieldDefinition<Staff>[] = [
   {
     attribute: "id",
     label: "login.id",
@@ -29,89 +29,33 @@ const fields: FieldDefinition<Student>[] = [
   {
     attribute: "name",
     label: "mypage.name",
-    width: 70,
+    width: 90,
   },
   {
     attribute: "hiragana",
     label: "mypage.furigana",
-    sort: true,
-    width: 80,
-  },
-  {
-    attribute: "birth",
-    label: "user_list.birth",
-    width: 80,
+    width: 90,
     sort: true,
   },
   {
-    attribute: "phone",
-    label: "mypage.phone",
-    width: 80,
-  },
-  {
-    attribute: "post_number",
-    label: "mypage.postal_code",
-    width: 70,
-    sort: true,
-  },
-  {
-    attribute: "address",
-    label: "mypage.address",
+    attribute: "staff_category",
+    label: "mypage.faculty_staff",
     width: 100,
-  },
-  {
-    attribute: "grade",
-    label: "user_list.grade",
-    width: 40,
     sort: true,
   },
   {
-    attribute: "class",
-    label: "user_list.class",
-    width: 45,
-    sort: true,
+    attribute: "phone1",
+    label: "mypage.phone1",
+    width: 90,
   },
   {
-    attribute: "attend_number",
-    label: "user_list.attend_bumber",
-    width: 80,
-    sort: true,
-  },
-  {
-    attribute: "house",
-    label: "user_list.house",
-    sort: true,
-    width: 50,
-  },
-  {
-    attribute: "extra_activity",
-    label: "user_list.extra_activity",
-    width: 80,
-    sort: true,
-  },
-  {
-    attribute: "curriculum",
-    label: "user_list.curriculum",
-    width: 100,
-  },
-  {
-    attribute: "enrolled_sibling",
-    label: "user_list.enrolled_sibling",
-    width: 80,
-  },
-  {
-    attribute: "parent",
-    label: "application.parent",
-    width: 80,
-  },
-  {
-    attribute: "parent_phone",
-    label: "user_list.parent_phone",
-    width: 70,
+    attribute: "phone2",
+    label: "mypage.phone2",
+    width: 90,
   },
 ]
 
-export const StudentList: React.FC = () => {
+export const StaffList: React.FC = () => {
   const { t } = useTranslation()
   const [displayCount, setDisplayCount] = useState<number>(PAGE_SIZE[0])
 
@@ -125,8 +69,8 @@ export const StudentList: React.FC = () => {
     >
       <Box
         sx={{
-          //maxWidth: "1098px",
-          width: "auto",
+          maxWidth: "1098px",
+          width: "100%",
           height: "100%",
         }}
       >
@@ -194,11 +138,7 @@ export const StudentList: React.FC = () => {
             <DownloadIcon sx={{ width: "20px", height: "20px" }} />
           </Button>
         </Box>
-        <UserTable
-          fields={fields}
-          content={studentData}
-          pagination={{ count: 10, currentPage: 1 }}
-        />
+        <UserTable fields={fields} content={staffData} pagination={{ count: 10, currentPage: 1 }} />
       </Box>
     </Box>
   )

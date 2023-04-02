@@ -12,11 +12,13 @@ import {
   Typography,
   Pagination,
 } from "src/UILibrary"
+import { SortIcon } from "../applicationTable/components/sortIcon"
 
 export interface FieldDefinition<T> {
   attribute: string
   label: string
   width?: number
+  sort?: boolean
   widget?: React.FC<{ value?: any; row?: T }>
 }
 
@@ -52,8 +54,8 @@ export const UserTable = <T extends Record<string, any>>({
   const { t } = useTranslation()
 
   return (
-    <TableContainer sx={{ width: "auto", mt: "1.6875rem" }}>
-      <Table size="small" sx={{ tableLayout: "fixed" }}>
+    <TableContainer sx={{ mt: "1.6875rem" }}>
+      <Table size="small" sx={{ tableLayout: "fixed", width: "auto" }}>
         <TableHead>
           <TableRow
             sx={{
@@ -63,7 +65,7 @@ export const UserTable = <T extends Record<string, any>>({
                 fontWeight: 500,
                 fontSize: "0.875rem",
                 lineHeight: "1.5rem",
-                p: "10px 0",
+                p: "10px 2px",
                 borderWidth: "0 2px 0 0",
                 borderStyle: "solid",
                 bgcolor: "text.secondary",
@@ -78,8 +80,9 @@ export const UserTable = <T extends Record<string, any>>({
             }}
           >
             {fields.map((field) => (
-              <TableCell key={field.label} sx={{ width: field.width }}>
+              <TableCell key={field.label} sx={{ width: field.width, position: "relative" }}>
                 {t(field.label)}
+                {field.sort === true && <SortIcon />}
               </TableCell>
             ))}
           </TableRow>
@@ -94,6 +97,10 @@ export const UserTable = <T extends Record<string, any>>({
                   borderWidth: 0,
                   textAlign: "center",
                   p: "0.625rem 0",
+                  color: "text.secondary",
+                  "&:first-of-type": {
+                    color: "secondary.dark",
+                  },
                   "&:not(:last-of-type)": {
                     borderWidth: "0 2px 2px 0",
                     borderStyle: "solid",
@@ -117,12 +124,13 @@ export const UserTable = <T extends Record<string, any>>({
                   ) : (
                     <Typography.Action
                       sx={{
-                        color: "text.secondary",
                         fontWeight: 400,
-                        whiteSpace: "nowrap",
                         lineHeight: "24px",
+                        display: "-webkit-box",
+                        WebkitLineClamp: 2,
+                        WebkitBoxOrient: "vertical",
                         overflow: "hidden",
-                        textOverflow: "ellipsis",
+                        textOverflow: "hidden",
                       }}
                     >
                       {getProperty(row, f.attribute)}

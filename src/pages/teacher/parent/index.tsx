@@ -1,15 +1,69 @@
 import React, { useState } from "react"
 import { useTranslation } from "react-i18next"
 
-import { Box, Button, MenuItem, Select, SelectChangeEvent, Typography } from "src/UILibrary"
-import { ApplicationListTable } from "src/components/applicationTable"
+import {
+  Box,
+  Button,
+  DownloadIcon,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
+  Typography,
+} from "src/UILibrary"
+import { UserTable, FieldDefinition } from "src/components/userTable"
 
+import { Parent } from "src/types/parent"
 import { PAGE_SIZE } from "src/constants/common"
-import { Application } from "src/types/application"
-import { SearchBox } from "../applicationList/components/searchBox"
-import { MOCK_APPLICATION_DATA } from "../applicationList/mockdata"
+import { MOCK_PARENT_DATA } from "./mockparent"
+import { SearchBox } from "./components/searchBox"
 
-const applicationData: Application[] = MOCK_APPLICATION_DATA
+const parentData: Parent[] = MOCK_PARENT_DATA
+
+const fields: FieldDefinition<Parent>[] = [
+  {
+    attribute: "id",
+    label: "login.id",
+    width: 50,
+    sort: true,
+  },
+  {
+    attribute: "name",
+    label: "mypage.name",
+    width: 90,
+  },
+  {
+    attribute: "hiragana",
+    label: "mypage.furigana",
+    width: 90,
+    sort: true,
+  },
+  {
+    attribute: "phone1",
+    label: "mypage.phone1",
+    width: 90,
+  },
+  {
+    attribute: "phone2",
+    label: "mypage.phone2",
+    width: 90,
+  },
+  {
+    attribute: "enrolled_sibling",
+    label: "user_list.enrolled_sibling",
+    width: 90,
+  },
+  {
+    attribute: "post_number",
+    label: "mypage.postal_code",
+    width: 90,
+    sort: true,
+  },
+  {
+    attribute: "address",
+    label: "mypage.address",
+    width: 200,
+  },
+]
 
 export const ParentList: React.FC = () => {
   const { t } = useTranslation()
@@ -20,6 +74,7 @@ export const ParentList: React.FC = () => {
       sx={{
         display: "flex",
         justifyContent: "center",
+        alignItems: "center",
       }}
     >
       <Box
@@ -32,37 +87,8 @@ export const ParentList: React.FC = () => {
         <Box
           sx={{
             display: "flex",
-            alignItems: "center",
             justifyContent: "space-between",
-            mt: "1.125rem",
-            pl: "1.25rem",
-            pr: "2rem",
-            borderRadius: "9px 9px 0px 0px",
-            boxShadow: "0px 0px 5px 0px rgba(0, 0, 0, 0.08)",
-          }}
-        >
-          <Button
-            variant="contained"
-            sx={{
-              backgroundColor: "secondary.dark",
-              borderRadius: "0.5625rem",
-              mt: "0.8125rem",
-              mb: "0.8125rem",
-            }}
-          >
-            <Typography.Title
-              sx={{ fontWeight: 500, fontSize: "20px", textAlign: "center", lineHeight: "1.5rem" }}
-            >
-              {t("application.proxy_application")}
-            </Typography.Title>
-          </Button>
-        </Box>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            mt: "0.6875rem",
-            pr: "2rem",
+            mt: "1rem",
             width: "100%",
           }}
         >
@@ -102,20 +128,29 @@ export const ParentList: React.FC = () => {
           <Button
             variant="contained"
             sx={{
-              backgroundColor: "secondary.dark",
-              borderRadius: "0.5625rem",
-              mt: "2.125rem",
+              backgroundColor: "info.contrastText",
+              borderRadius: "0.1875rem",
+              mt: "3.125rem",
+              p: "0.5625rem 2rem",
             }}
           >
             <Typography.Title
-              sx={{ fontWeight: 500, fontSize: "20px", textAlign: "center", lineHeight: "1.5rem" }}
+              sx={{
+                fontWeight: 500,
+                fontSize: "14px",
+                textAlign: "center",
+                lineHeight: "0.875rem",
+                mr: "1rem",
+              }}
             >
-              {t("application.bulk_approval")}
+              {t("user_list.csv_download")}
             </Typography.Title>
+            <DownloadIcon sx={{ width: "20px", height: "20px" }} />
           </Button>
         </Box>
-        <ApplicationListTable
-          applicationData={applicationData}
+        <UserTable
+          fields={fields}
+          content={parentData}
           pagination={{ count: 10, currentPage: 1 }}
         />
       </Box>

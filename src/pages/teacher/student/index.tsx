@@ -11,11 +11,11 @@ import {
   Typography,
 } from "src/UILibrary"
 import { UserTable, FieldDefinition } from "src/components/userTable"
-import { SearchBox } from "../applicationList/components/searchBox"
 
 import { Student } from "src/types/student"
 import { PAGE_SIZE } from "src/constants/common"
-import { MOCK_STUDENT_DATA } from "./mockuser"
+import { MOCK_STUDENT_DATA } from "./mockstudent"
+import { SearchBox } from "./components/searchBox"
 
 const studentData: Student[] = MOCK_STUDENT_DATA
 
@@ -23,66 +23,91 @@ const fields: FieldDefinition<Student>[] = [
   {
     attribute: "id",
     label: "login.id",
+    width: 50,
+    sort: true,
   },
   {
     attribute: "name",
     label: "mypage.name",
+    width: 70,
   },
   {
-    attribute: "furigana",
+    attribute: "hiragana",
     label: "mypage.furigana",
+    sort: true,
+    width: 100,
   },
   {
     attribute: "birth",
     label: "user_list.birth",
+    width: 80,
+    sort: true,
   },
   {
     attribute: "phone",
     label: "mypage.phone",
+    width: 80,
   },
   {
-    attribute: "postal_code",
+    attribute: "post_number",
     label: "mypage.postal_code",
+    width: 70,
+    sort: true,
   },
   {
     attribute: "address",
     label: "mypage.address",
+    width: 120,
   },
   {
     attribute: "grade",
     label: "user_list.grade",
+    width: 40,
+    sort: true,
   },
   {
     attribute: "class",
     label: "user_list.class",
+    width: 45,
+    sort: true,
   },
   {
     attribute: "attend_number",
     label: "user_list.attend_bumber",
+    width: 80,
+    sort: true,
   },
   {
     attribute: "house",
     label: "user_list.house",
+    sort: true,
+    width: 50,
   },
   {
     attribute: "extra_activity",
     label: "user_list.extra_activity",
+    width: 80,
+    sort: true,
   },
   {
     attribute: "curriculum",
     label: "user_list.curriculum",
+    width: 100,
   },
   {
     attribute: "enrolled_sibling",
     label: "user_list.enrolled_sibling",
+    width: 80,
   },
   {
     attribute: "parent",
     label: "application.parent",
+    width: 80,
   },
   {
     attribute: "parent_phone",
     label: "user_list.parent_phone",
+    width: 70,
   },
 ]
 
@@ -100,8 +125,8 @@ export const StudentList: React.FC = () => {
     >
       <Box
         sx={{
-          maxWidth: "1098px",
-          width: "100%",
+          //maxWidth: "1098px",
+          width: "auto",
           height: "100%",
         }}
       >
@@ -110,7 +135,6 @@ export const StudentList: React.FC = () => {
             display: "flex",
             justifyContent: "space-between",
             mt: "1rem",
-            pr: "2rem",
             width: "100%",
           }}
         >

@@ -1,10 +1,11 @@
 import React, { useState } from "react"
-import { useTranslation } from "react-i18next"
 
 import { Box, Typography } from "src/UILibrary"
 
 //import { PAGE_SIZE } from "src/constants/common"
 import { FieldDefinition, MealTable } from "src/components/mealTable"
+import { DateType } from "./components/dateType"
+
 import { MOCK_MEAL_DATA } from "./mockmeal"
 import { Meal } from "src/types/meal"
 import { MealDetailModal } from "./components/mealDetail"
@@ -230,7 +231,6 @@ const fields: FieldDefinition<Meal>[] = [
 ]
 
 export const MealList: React.FC = () => {
-  const { t } = useTranslation()
   const [mealDetailModalOpen, setMealDetailModalOpen] = useState<boolean>(false)
 
   return (
@@ -248,16 +248,7 @@ export const MealList: React.FC = () => {
           height: "100%",
         }}
       >
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            mt: "1rem",
-            width: "100%",
-          }}
-        >
-          <Typography.Detail>{t("application.display_count")}</Typography.Detail>
-        </Box>
+        <DateType />
         <MealTable fields={fields} content={mealData} onDetail={setMealDetailModalOpen} />
       </Box>
       <MealDetailModal open={mealDetailModalOpen} handleMealDetailOpen={setMealDetailModalOpen} />

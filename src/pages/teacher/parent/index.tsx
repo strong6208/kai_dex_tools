@@ -34,7 +34,7 @@ const fields: FieldDefinition<Parent>[] = [
   {
     attribute: "hiragana",
     label: "mypage.furigana",
-    width: 90,
+    width: 100,
     sort: true,
   },
   {

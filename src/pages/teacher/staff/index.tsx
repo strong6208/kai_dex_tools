@@ -34,7 +34,7 @@ const fields: FieldDefinition<Staff>[] = [
   {
     attribute: "hiragana",
     label: "mypage.furigana",
-    width: 90,
+    width: 100,
     sort: true,
   },
   {

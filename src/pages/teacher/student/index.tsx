@@ -35,7 +35,7 @@ const fields: FieldDefinition<Student>[] = [
     attribute: "hiragana",
     label: "mypage.furigana",
     sort: true,
-    width: 80,
+    width: 100,
   },
   {
     attribute: "birth",
@@ -57,7 +57,7 @@ const fields: FieldDefinition<Student>[] = [
   {
     attribute: "address",
     label: "mypage.address",
-    width: 100,
+    width: 120,
   },
   {
     attribute: "grade",

@@ -244,7 +244,7 @@ export const MealList: React.FC = () => {
       <Box
         sx={{
           maxWidth: "1098px",
-          width: "auto",
+          width: "100%",
           height: "100%",
         }}
       >
@@ -256,19 +256,7 @@ export const MealList: React.FC = () => {
             width: "100%",
           }}
         >
-          <Box>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                mt: "0.9375rem",
-                ml: "1.25rem",
-                gap: "1.125rem",
-              }}
-            >
-              <Typography.Detail>{t("application.display_count")}</Typography.Detail>
-            </Box>
-          </Box>
+          <Typography.Detail>{t("application.display_count")}</Typography.Detail>
         </Box>
         <MealTable fields={fields} content={mealData} onDetail={setMealDetailModalOpen} />
       </Box>

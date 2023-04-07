@@ -1,7 +1,15 @@
 import React from "react"
 import { useTranslation } from "react-i18next"
 
-import { Box, Typography } from "src/UILibrary"
+import {
+  Box,
+  Table,
+  // TableBody,
+  // TableCell,
+  // TableHead,
+  // TableRow,
+  Typography,
+} from "src/UILibrary"
 
 export interface FieldDefinition<T> {
   attribute: string
@@ -25,121 +33,105 @@ interface AdvancedTableParams<T> {
   content: T[]
   fields: FieldDefinition<T>[]
   idField?: string
-  variant?: "pagination" | "next-previous"
-  pagination?: {
-    count: number
-    currentPage: number
-  }
   onDetail?: Function
 }
 
-export const MealTable = <T extends Record<string, any>>({
+export const MealDetailTable = <T extends Record<string, any>>({
   content,
   fields,
   idField = "id",
-  onDetail,
 }: AdvancedTableParams<T>) => {
   const { t } = useTranslation()
-  const handleDetail = () => {
-    onDetail && onDetail(true)
-  }
 
   return (
-    <Box sx={{ mt: "1.6875rem", display: "flex" }}>
-      <Box
-        sx={{
-          bgcolor: "text.secondary",
-          borderRadius: "9px 0px 0px 9px",
-          overflow: "scroll",
-          flex: "2",
-        }}
-      >
-        {fields.slice(1, 7).map((field) => (
+    <Table
+      size="small"
+      sx={{ tableLayout: "fixed", bgcolor: "info.dark", color: "text.secondary" }}
+    >
+      {content.map((row) => (
+        <Box key={row[idField]}>
+          {fields.slice(0, 1).map((f) => (
+            <Box
+              key={`cell-${f.attribute}`}
+              sx={{
+                borderWidth: "2px 0 2px 0",
+                borderStyle: "solid",
+                borderColor: "background.paper",
+                borderCollapse: "collapse",
+                p: "0.75rem",
+              }}
+            >
+              <Typography.Action
+                sx={{
+                  fontSize: "16px",
+                  lineHeight: "1.125rem",
+                  overflow: "hidden",
+                  textOverflow: "hidden",
+                }}
+              >
+                {t(f.label)}
+              </Typography.Action>
+            </Box>
+          ))}
           <Box
-            key={field.label}
             sx={{
-              // p: "1.875rem 4.15rem",
-              py: "1.875rem",
-              textAlign: "center",
-              color: "background.paper",
-              borderWidth: "0 0 2px 0",
-              fontSize: "18px",
-              borderStyle: "solid",
-              lineHeight: "1.125rem",
+              display: "flex",
             }}
           >
-            {t(field.label)}
-          </Box>
-        ))}
-      </Box>
-      <Box sx={{ flex: "4" }}>
-        {content.slice(0, 1).map((row) => (
-          <Box key={row[idField]}>
-            {fields.slice(1, 7).map((f) => (
+            {fields.slice(1, 5).map((f) => (
               <Box
                 key={`cell-${f.attribute}`}
                 sx={{
-                  p: "0.5rem 1.25rem",
-                  height: "80px",
-                  color: "text.secondary",
+                  py: "0.5rem",
+                  flex: "1",
+                  textAlign: "center",
                   borderWidth: "2px 2px 0 0",
                   borderStyle: "solid",
-                  borderColor: "info.light",
+                  borderColor: "background.paper",
                   borderCollapse: "collapse",
-                  bgcolor: "background.paper",
                 }}
               >
-                {f.widget ? (
-                  f.widget({ value: getProperty(row, f.attribute), row: row })
-                ) : (
-                  <Box>
-                    <Typography.Action
-                      sx={{
-                        textAlign: "start",
-                        fontSize: "18px",
-                        whiteSpace: "nowrap",
-                        overflow: "hidden",
-                        textOverflow: "ellipsis",
-                      }}
-                    >
-                      {getProperty(row, f.attribute)}
-                    </Typography.Action>
-                  </Box>
-                )}
+                <Typography.Detail
+                  sx={{
+                    fontWeight: 400,
+                    overflow: "hidden",
+                    textOverflow: "hidden",
+                  }}
+                >
+                  {t(f.label)}
+                </Typography.Detail>
               </Box>
             ))}
           </Box>
-        ))}
-      </Box>
-      <Box sx={{ flex: "1" }}>
-        {fields.slice(1, 7).map((f) => (
-          <Box
-            key={`cell-${f.attribute}`}
-            sx={{
-              p: "1.375rem 2.5rem",
-              height: "80px",
-              width: "116px",
-              color: "text.secondary",
-              borderWidth: "2px 2px 0 0",
-              borderStyle: "solid",
-              borderColor: "info.light",
-              bgcolor: "background.paper",
-            }}
-          >
-            <Typography.Detail
-              onClick={handleDetail}
-              sx={{
-                fontSize: "14px",
-                cursor: "pointer",
-                color: "secondary.dark",
-                lineHeight: "1rem",
-              }}
-            >
-              {t("meal.detail")}
-            </Typography.Detail>
+          <Box sx={{ display: "flex" }}>
+            {fields.slice(1, 5).map((f) => (
+              <Box
+                key={`cell-${f.attribute}`}
+                sx={{
+                  flex: "1",
+                  py: "0.5rem",
+                  textAlign: "center",
+                  borderWidth: "2px 2px 0 0",
+                  borderStyle: "solid",
+                  borderColor: "background.paper",
+                  borderCollapse: "collapse",
+                }}
+              >
+                <Typography.Detail
+                  sx={{
+                    lineHeight: "1.25rem",
+                    fontWeight: 400,
+                    overflow: "hidden",
+                    textOverflow: "hidden",
+                  }}
+                >
+                  {getProperty(row, f.attribute)}
+                </Typography.Detail>
+              </Box>
+            ))}
           </Box>
-        ))}
-      </Box>
-    </Box>
+        </Box>
+      ))}
+    </Table>
   )
 }

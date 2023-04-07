@@ -231,8 +231,8 @@ const fields: FieldDefinition<Meal>[] = [
 ]
 
 export const MealList: React.FC = () => {
+  const [mealDate, setMealDate] = useState<string>(new Date().toString())
   const [mealDetailModalOpen, setMealDetailModalOpen] = useState<boolean>(false)
-
   return (
     <Box
       sx={{
@@ -248,10 +248,14 @@ export const MealList: React.FC = () => {
           height: "100%",
         }}
       >
-        <DateType />
+        <DateType setMealDate={setMealDate} mealDate={mealDate} />
         <MealTable fields={fields} content={mealData} onDetail={setMealDetailModalOpen} />
       </Box>
-      <MealDetailModal open={mealDetailModalOpen} handleMealDetailOpen={setMealDetailModalOpen} />
+      <MealDetailModal
+        open={mealDetailModalOpen}
+        handleMealDetailOpen={setMealDetailModalOpen}
+        mealDate={mealDate}
+      />
     </Box>
   )
 }

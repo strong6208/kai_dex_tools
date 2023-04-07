@@ -51,13 +51,15 @@ export const MealTable = <T extends Record<string, any>>({
           bgcolor: "text.secondary",
           borderRadius: "9px 0px 0px 9px",
           overflow: "scroll",
+          flex: "2",
         }}
       >
         {fields.slice(1, 7).map((field) => (
           <Box
             key={field.label}
             sx={{
-              p: "1.875rem 4.15rem",
+              // p: "1.875rem 4.15rem",
+              py: "1.875rem",
               textAlign: "center",
               color: "background.paper",
               borderWidth: "0 0 2px 0",
@@ -70,7 +72,7 @@ export const MealTable = <T extends Record<string, any>>({
           </Box>
         ))}
       </Box>
-      <Box sx={{ width: "350px" }}>
+      <Box sx={{ flex: "4" }}>
         {content.slice(0, 1).map((row) => (
           <Box key={row[idField]}>
             {fields.slice(1, 7).map((f) => (
@@ -109,7 +111,7 @@ export const MealTable = <T extends Record<string, any>>({
           </Box>
         ))}
       </Box>
-      <Box>
+      <Box sx={{ flex: "1" }}>
         {fields.slice(1, 7).map((f) => (
           <Box
             key={`cell-${f.attribute}`}

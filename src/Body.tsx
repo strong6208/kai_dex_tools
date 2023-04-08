@@ -13,6 +13,8 @@ import { UserApplicationDetail } from "./pages/user/applicationDetail"
 import { NewApply } from "src/pages/user/newApply"
 
 import { FetchSession } from "src/modules/sessionProvider"
+import { StaffList } from "./pages/teacher/staff"
+import { MealList } from "./pages/user/mealList"
 
 export function Body() {
   return (
@@ -31,9 +33,11 @@ export function Body() {
           <Route path="/teacher/application" element={<TeacherApplication />} />
           <Route path="/teacher/students" element={<StudentList />} />
           <Route path="/teacher/parents" element={<ParentList />} />
+          <Route path="/teacher/staffs" element={<StaffList />} />
           <Route path="/application" element={<UserApplication />} />
           <Route path="/application/:id" element={<UserApplicationDetail />} />
           <Route path="/application/new" element={<NewApply />} />
+          <Route path="/meal-list" element={<MealList />} />
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/reset-password" element={<ResetPassword />} />

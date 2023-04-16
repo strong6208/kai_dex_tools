@@ -147,6 +147,7 @@ export const MenuLayout: FC<PropsWithChildren> = ({ children }) => {
 
   const menuContent = (
     <List>
+      Menu Content
       {menus?.map(
         (
           m: { subMenu: any[]; icon: string; label: any; path: To },
@@ -224,7 +225,7 @@ export const MenuLayout: FC<PropsWithChildren> = ({ children }) => {
                 },
               }}
             >
-              {menuContent}Menu Content testing
+              {menuContent}
             </Popover>
           </Stack>
         </AppBar>

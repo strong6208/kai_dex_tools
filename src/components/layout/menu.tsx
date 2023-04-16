@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import type { FC, MouseEvent, PropsWithChildren } from "react"
 import { useTranslation } from "react-i18next"
-import { To, useLocation, useNavigate } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 
 import {
   AppBar,
@@ -27,13 +27,14 @@ import LogoImage from "src/assets/imgs/logo_white.png"
 import { ReactComponent as HamburgerIcon } from "src/assets/icons/hamburger.svg"
 
 import { useSession } from "src/modules/sessionProvider"
+import { Label } from "src/types/menu"
 
 export const MenuLayout: FC<PropsWithChildren> = ({ children }) => {
   const { t } = useTranslation()
   const location = useLocation()
   const navigate = useNavigate()
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null)
-  const [menus, setMenus] = useState<any>()
+  const [menus, setMenus] = useState<Label[]>()
 
   const onOpenMobileMenu = (e: MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(e.currentTarget)
@@ -150,8 +151,7 @@ export const MenuLayout: FC<PropsWithChildren> = ({ children }) => {
       Menu Content
       {menus?.map(
         (
-          m: { subMenu: any[]; icon: string; label: any; path: To },
-          i: React.Key | null | undefined
+          m, i
         ) =>
           m.subMenu ? (
             <ExpandableList
@@ -159,7 +159,7 @@ export const MenuLayout: FC<PropsWithChildren> = ({ children }) => {
               subMenu={
                 <List disablePadding>
                   {m.subMenu.map((s, j) => (
-                    <ListItemButton key={`${i}-${j}`} onClick={() => navigate(s.path)}>
+                    <ListItemButton key={`${i}-${j}`} onClick={() => navigate("s.path")}>
                       <ListItemText primary={t(s.label)} />
                     </ListItemButton>
                   ))}
@@ -175,7 +175,7 @@ export const MenuLayout: FC<PropsWithChildren> = ({ children }) => {
             <ListItemButton
               key={i}
               selected={location.pathname === m.path}
-              onClick={() => navigate(m.path)}
+              onClick={() => navigate("m.path")}
             >
               <ListItemIcon>
                 <Image src={m.icon} />

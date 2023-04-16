@@ -34,7 +34,28 @@ export const MenuLayout: FC<PropsWithChildren> = ({ children }) => {
   const location = useLocation()
   const navigate = useNavigate()
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null)
-  const [menus, setMenus] = useState<Label[]>()
+  const [menus, setMenus] = useState<Label[]>([
+    {
+      icon: UserIcon,
+      label: "menu.my_page",
+      path: "/my-page",
+    },
+    {
+      label: "menu.from_parent",
+      icon: UsersIcon,
+      path: "/application",
+    },
+    {
+      label: "menu.meal",
+      icon: MealIcon,
+      path: "/meal-list",
+    },
+    {
+      label: "menu.pdf_transfer",
+      icon: BuildingIcon,
+      path: "/pdf-transfer",
+    },
+  ])
 
   const onOpenMobileMenu = (e: MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(e.currentTarget)

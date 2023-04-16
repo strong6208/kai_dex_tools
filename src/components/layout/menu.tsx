@@ -86,7 +86,7 @@ export const MenuLayout: FC<PropsWithChildren> = ({ children }) => {
             },
             {
               label: "menu.meal_choices",
-              path: "/teacher/meal-choices",
+              path: "/teacher/meal-choice",
             },
           ],
         },

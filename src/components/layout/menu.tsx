@@ -159,7 +159,7 @@ export const MenuLayout: FC<PropsWithChildren> = ({ children }) => {
               subMenu={
                 <List disablePadding>
                   {m.subMenu.map((s, j) => (
-                    <ListItemButton key={`${i}-${j}`} onClick={() => navigate("s.path")}>
+                    <ListItemButton key={`${i}-${j}`} onClick={() => navigate("/")}>
                       <ListItemText primary={t(s.label)} />
                     </ListItemButton>
                   ))}
@@ -175,7 +175,7 @@ export const MenuLayout: FC<PropsWithChildren> = ({ children }) => {
             <ListItemButton
               key={i}
               selected={location.pathname === m.path}
-              onClick={() => navigate("m.path")}
+              onClick={() => navigate("/")}
             >
               <ListItemIcon>
                 <Image src={m.icon} />

@@ -2,6 +2,6 @@ export type Label = {
   id?: string
   label: string
   icon?: any
-  path?: string
+  path?: any
   subMenu?: Label[]
 }

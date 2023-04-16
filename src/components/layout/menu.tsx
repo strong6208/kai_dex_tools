@@ -118,7 +118,7 @@ export const MenuLayout: FC<PropsWithChildren> = ({ children }) => {
           path: "/teacher/pdf-transfer",
         },
       ])
-    } else if (session?.value.id === "student") {
+    } else if (session?.value.id === "student" || session?.value.id === "parent") {
       setMenus([
         {
           icon: UserIcon,
@@ -141,35 +141,11 @@ export const MenuLayout: FC<PropsWithChildren> = ({ children }) => {
           path: "/pdf-transfer",
         },
       ])
-    } else if (session?.value.id === "parent") {
-      setMenus([
-        {
-          icon: UserIcon,
-          label: "menu.my_page",
-          path: "/my-page",
-        },
-        {
-          label: "menu.from_parent",
-          icon: UsersIcon,
-          path: "/application",
-        },
-        {
-          label: "menu.meal",
-          icon: MealIcon,
-          path: "/meal-list",
-        },
-        {
-          label: "menu.pdf_transfer",
-          icon: BuildingIcon,
-          path: "/pdf-transfer",
-        },
-      ])
     }
   }, [session])
 
   const menuContent = (
     <List>
-      Menu Content
       {menus?.map((m, i) =>
         m.subMenu ? (
           <ExpandableList
@@ -177,7 +153,7 @@ export const MenuLayout: FC<PropsWithChildren> = ({ children }) => {
             subMenu={
               <List disablePadding>
                 {m.subMenu.map((s, j) => (
-                  <ListItemButton key={`${i}-${j}`} onClick={() => navigate("/")}>
+                  <ListItemButton key={`${i}-${j}`} onClick={() => navigate(m.path)}>
                     <ListItemText primary={t(s.label)} />
                   </ListItemButton>
                 ))}
@@ -193,7 +169,7 @@ export const MenuLayout: FC<PropsWithChildren> = ({ children }) => {
           <ListItemButton
             key={i}
             selected={location.pathname === m.path}
-            onClick={() => navigate("/")}
+            onClick={() => navigate(m.path)}
           >
             <ListItemIcon>
               <Image src={m.icon} />

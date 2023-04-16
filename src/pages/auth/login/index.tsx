@@ -17,7 +17,7 @@ export const Login: React.FC = () => {
   }
 
   const nextPage = () => {
-    localStorage.setItem("auth", JSON.stringify(authType))
+    sessionStorage.setItem("auth", JSON.stringify(authType))
     navigate("/my-page")
   }
 

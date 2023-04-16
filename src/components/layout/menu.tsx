@@ -149,40 +149,37 @@ export const MenuLayout: FC<PropsWithChildren> = ({ children }) => {
   const menuContent = (
     <List>
       Menu Content
-      {menus?.map(
-        (
-          m, i
-        ) =>
-          m.subMenu ? (
-            <ExpandableList
-              key={i}
-              subMenu={
-                <List disablePadding>
-                  {m.subMenu.map((s, j) => (
-                    <ListItemButton key={`${i}-${j}`} onClick={() => navigate("/")}>
-                      <ListItemText primary={t(s.label)} />
-                    </ListItemButton>
-                  ))}
-                </List>
-              }
-            >
-              <ListItemIcon>
-                <Image src={m.icon} />
-              </ListItemIcon>
-              <ListItemText primary={t(m.label)} />
-            </ExpandableList>
-          ) : (
-            <ListItemButton
-              key={i}
-              selected={location.pathname === m.path}
-              onClick={() => navigate("/")}
-            >
-              <ListItemIcon>
-                <Image src={m.icon} />
-              </ListItemIcon>
-              <ListItemText primary={t(m.label)} />
-            </ListItemButton>
-          )
+      {menus?.map((m, i) =>
+        m.subMenu ? (
+          <ExpandableList
+            key={i}
+            subMenu={
+              <List disablePadding>
+                {m.subMenu.map((s, j) => (
+                  <ListItemButton key={`${i}-${j}`} onClick={() => navigate("/")}>
+                    <ListItemText primary={t(s.label)} />
+                  </ListItemButton>
+                ))}
+              </List>
+            }
+          >
+            <ListItemIcon>
+              <Image src={m.icon} />
+            </ListItemIcon>
+            <ListItemText primary={t(m.label)} />
+          </ExpandableList>
+        ) : (
+          <ListItemButton
+            key={i}
+            selected={location.pathname === m.path}
+            onClick={() => navigate("/")}
+          >
+            <ListItemIcon>
+              <Image src={m.icon} />
+            </ListItemIcon>
+            <ListItemText primary={t(m.label)} />
+          </ListItemButton>
+        )
       )}
     </List>
   )

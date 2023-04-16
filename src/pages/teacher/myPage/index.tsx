@@ -29,7 +29,7 @@ export const MyPage: React.FC = () => {
           <Image src={LogoImage} alt="Logo" sx={{ mb: 4 }} />
 
           <Typography.Title sx={{ fontWeight: 400, fontSize: "2rem", lineHeight: 1, mb: 1 }}>
-            {t("mypage.new_notifications")}
+            {t("mypage.new_notifications")}mypage
           </Typography.Title>
 
           <Paper

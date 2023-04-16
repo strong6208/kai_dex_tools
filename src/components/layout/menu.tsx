@@ -199,7 +199,7 @@ export const MenuLayout: FC<PropsWithChildren> = ({ children }) => {
         </Box>
       </Box>
       <Box sx={{ display: { md: "none", xs: "flex" }, height: "100%" }}>
-        <AppBar position="fixed" sx={{ height: 100, px: 2, py: 0.75, justifyContent: "flex-end" }}>
+        <AppBar sx={{ height: 100, px: 2, py: 0.75, justifyContent: "flex-end" }}>
           <Stack direction="row" alignItems="center" justifyContent="space-between">
             <Image src={LogoImage} alt="Logo" sx={{ maxWidth: "50%" }} />
 

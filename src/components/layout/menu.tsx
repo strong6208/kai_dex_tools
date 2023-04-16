@@ -34,7 +34,28 @@ export const MenuLayout: FC<PropsWithChildren> = ({ children }) => {
   const location = useLocation()
   const navigate = useNavigate()
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null)
-  const [menus, setMenus] = useState<Label[]>()
+  const [menus, setMenus] = useState<Label[]>([
+    {
+      icon: UserIcon,
+      label: "menu.my_page",
+      path: "/my-page",
+    },
+    {
+      label: "menu.from_student",
+      icon: UsersIcon,
+      path: "/application",
+    },
+    {
+      label: "menu.meal",
+      icon: MealIcon,
+      path: "/meal-list",
+    },
+    {
+      label: "menu.pdf_transfer",
+      icon: BuildingIcon,
+      path: "/pdf-transfer",
+    },
+  ])
 
   const onOpenMobileMenu = (e: MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(e.currentTarget)
@@ -122,7 +143,6 @@ export const MenuLayout: FC<PropsWithChildren> = ({ children }) => {
       ])
     }
   }, [session])
-
   const menuContent = (
     <List>
       {menus?.map((m, i) =>
@@ -132,7 +152,7 @@ export const MenuLayout: FC<PropsWithChildren> = ({ children }) => {
             subMenu={
               <List disablePadding>
                 {m.subMenu.map((s, j) => (
-                  <ListItemButton key={`${i}-${j}`} onClick={() => navigate(m.path)}>
+                  <ListItemButton key={`${i}-${j}`} onClick={() => navigate(s.path as string)}>
                     <ListItemText primary={t(s.label)} />
                   </ListItemButton>
                 ))}
@@ -140,7 +160,7 @@ export const MenuLayout: FC<PropsWithChildren> = ({ children }) => {
             }
           >
             <ListItemIcon>
-              <Image src={m.icon} />
+              <Image src={m.icon as string} />
             </ListItemIcon>
             <ListItemText primary={t(m.label)} />
           </ExpandableList>
@@ -148,10 +168,10 @@ export const MenuLayout: FC<PropsWithChildren> = ({ children }) => {
           <ListItemButton
             key={i}
             selected={location.pathname === m.path}
-            onClick={() => navigate(m.path)}
+            onClick={() => navigate(m.path as string)}
           >
             <ListItemIcon>
-              <Image src={m.icon} />
+              <Image src={m.icon as string} />
             </ListItemIcon>
             <ListItemText primary={t(m.label)} />
           </ListItemButton>

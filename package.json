@@ -9,7 +9,7 @@
     "@mui/icons-material": "^5.8.4",
     "@mui/lab": "^5.0.0-alpha.122",
     "@mui/material": "^5.11.12",
-    "@mui/x-date-pickers": "^5.0.0-beta.7",
+    "@mui/x-date-pickers": "^6.7.0",
     "@testing-library/dom": "9.0.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^14.0.0",
